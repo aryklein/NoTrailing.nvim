@@ -23,6 +23,6 @@ You may consider to use `autocmd BufWritePre * :%s/\s\+$//e` instead.
             -- `exclude_filetypes` configures which filetypes to exclude when displaying trailing whitespaces
             exclude_filetypes = {"Telescope", "help", "lazy", "packer", "dashboard", "NvimTree", "Trouble"},
         })
-    END
+    end
 }
 ```
