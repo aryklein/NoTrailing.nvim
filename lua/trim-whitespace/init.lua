@@ -61,8 +61,8 @@ M.setup = function(user_config)
     -- merge user config with default config
     config = vim.tbl_extend("force", config, user_config or {})
     -- create commands
-    vim.api.nvim_create_user_command("TrimWhitespace", "M.trim()", {})
-    vim.api.nvim_create_user_command("HighlightWhitespace", "M.highlight()", {})
+    vim.api.nvim_create_user_command("TrimWhitespace", M.trim, {})
+    vim.api.nvim_create_user_command("HighlightWhitespace", M.highlight, {})
 end
 
 return M
