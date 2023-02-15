@@ -12,7 +12,7 @@ You may consider to use `autocmd BufWritePre * :%s/\s\+$//e` instead.
 
 {
     'aryklein/trim-whitespace.nvim',
-    cmd = {"TrimWhitespace", "HighlightWhitespace"},
+    cmd = {"WhitespaceTrim", "WhitespaceHighlightToggle"},
     config = function ()
         require('trim-whitespace').setup({
             -- configuration options and defaults
