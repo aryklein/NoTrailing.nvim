@@ -1,6 +1,7 @@
 --
 local config = {
     highlight = "Search",
+    pattern = "\\s\\+$",
     exclude_filetypes = {
         "Telescope",
         "help",
@@ -40,7 +41,7 @@ M.trim = function()
     -- replace all lines in the buffer with the trimmed lines
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     -- print message
-    print("Trimmed " .. count .. " lines")
+    print("Removed trailing whitespace on " .. count .. " line(s)")
 end
 
 M.highlight = function()
@@ -49,20 +50,26 @@ M.highlight = function()
         return
     end
 
+    -- check if highlight match already exists
+    -- this is used by the toggle feature
+    local matches = vim.fn.getmatches()
+    for _, match in ipairs(matches) do
+        if (match.group == config.highlight and match.pattern == config.pattern) then
+            vim.fn.matchdelete(match.id)
+            return
+        end
+    end
+
     -- match trailing whitespace for highlighting
-    local pattern = [[\s\+$]]
-    local command = string.format([[match %s /%s/]], config.highlight, pattern)
-
-    vim.cmd(command)
-
+    vim.fn.matchadd(config.highlight, config.pattern)
 end
 
 M.setup = function(user_config)
     -- merge user config with default config
     config = vim.tbl_extend("force", config, user_config or {})
     -- create commands
-    vim.api.nvim_create_user_command("TrimWhitespace", M.trim, {})
-    vim.api.nvim_create_user_command("HighlightWhitespace", M.highlight, {})
+    vim.api.nvim_create_user_command("WhitespaceTrim", M.trim, {})
+    vim.api.nvim_create_user_command("WhitespaceHighlightToggle", M.highlight, {})
 end
 
 return M
