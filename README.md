@@ -1,4 +1,4 @@
-# trim-whitespace.nvim
+# NoTrailing.nvim
 
 A simple Neovim plugin to highlight and remove trailing whitespace.
 
@@ -11,10 +11,10 @@ You may consider to use `autocmd BufWritePre * :%s/\s\+$//e` instead.
 -- using Lazy
 
 {
-    'aryklein/trim-whitespace.nvim',
-    cmd = {"WhitespaceTrim", "WhitespaceHighlightToggle"},
+    'aryklein/NoTrailing.nvim'
+    cmd = {"TrailingTrim", "TrilingHighlightToggle"},
     config = function ()
-        require('trim-whitespace').setup({
+        require('NoTrailing').setup({
             -- configuration options and defaults
 
             -- `highlight` configures which highlight is used to display the trailing whitespaces

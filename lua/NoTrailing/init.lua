@@ -68,8 +68,8 @@ M.setup = function(user_config)
     -- merge user config with default config
     config = vim.tbl_extend("force", config, user_config or {})
     -- create commands
-    vim.api.nvim_create_user_command("WhitespaceTrim", M.trim, {})
-    vim.api.nvim_create_user_command("WhitespaceHighlightToggle", M.highlight, {})
+    vim.api.nvim_create_user_command("TrailingTrim", M.trim, {})
+    vim.api.nvim_create_user_command("TrailingHighlightToggle", M.highlight, {})
 end
 
 return M
