@@ -12,7 +12,7 @@ You may consider to use `autocmd BufWritePre * :%s/\s\+$//e` instead.
 
 {
     'aryklein/NoTrailing.nvim'
-    cmd = {"TrailingTrim", "TrilingHighlightToggle"},
+    cmd = {"TrailingTrim", "TrailingHighlightToggle"},
     config = function ()
         require('NoTrailing').setup({
             -- configuration options and defaults
